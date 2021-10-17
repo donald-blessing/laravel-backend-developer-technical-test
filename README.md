@@ -1,15 +1,16 @@
 <h1 align="center"><strong>Laravel Backend Developer Technical Test</strong></h1>
 
-## Scenario:
+## Scenario
 
 You are required to build an ordering system with centralized backend and separate clients with the same user interface.
 You will implement the following:
 2 user types registration
+
 -   Service(s) renderers (maybe dry cleaning, house cleaning or any you prefer)
 -   Customers
     NB: Admin should have total control over the system.
 
-## Personas:
+## Personas
 
 ## Service Renderer
 

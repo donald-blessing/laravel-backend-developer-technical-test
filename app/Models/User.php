@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Service\Service;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
     ];
 
     /**
@@ -41,4 +43,42 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The services that belong to the user.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
+
+    /**
+     * Get the user admin
+     *
+     * @return string
+     */
+    public function getIsAdminAttribute()
+    {
+        return $this->type == 'admin';
+    }
+
+    /**
+     * Get the user customer
+     *
+     * @return string
+     */
+    public function getIsCustomerAttribute()
+    {
+        return $this->type == 'customer';
+    }
+
+    /**
+     * Get the user service provider
+     *
+     * @return string
+     */
+    public function getIsServiceProviderAttribute()
+    {
+        return $this->type == 'service';
+    }
 }
